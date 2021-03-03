@@ -48,7 +48,7 @@ export default function SendMessageForm(props) {
             flex: 1,
             flexGrow: 1,
             flexDirection: 'row',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: '#2DA8D8FF',
             flexBasis: 100,

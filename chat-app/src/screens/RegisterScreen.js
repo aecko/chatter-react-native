@@ -34,13 +34,13 @@ const RegisterScreen = ({ navigation }) => {
         .then((userCredential) => {
           auth.currentUser.updateProfile({
             displayName: name.value,
-            photoURL: 'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/7_avatar-512.png'
+            photoURL: 'https://icon2.cleanpng.com/20180529/gvy/kisspng-female-youtube-in-my-frame-of-mind-female-avatar-5b0cd573872302.5131979915275677315535.jpg'
           })
             .then(() => {
               // Created Account
               navigation.reset({
                 index: 0,
-                routes: [{ name: 'Welcome' }],
+                routes: [{ name: 'ChatBox' }],
               })
             })
           // ...
@@ -99,7 +99,7 @@ const RegisterScreen = ({ navigation }) => {
         Sign Up
       </Button>
       <View style={styles.row}>
-        <Text>Already have an account? </Text>
+        <Text style={{color :theme.colors.paragraphText}}>Already have an account? </Text>
         <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
           <Text style={styles.link}>Login</Text>
         </TouchableOpacity>

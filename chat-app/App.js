@@ -5,9 +5,6 @@ import { StyleSheet, View, Platform, useWindowDimensions, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-//import conponents
-
-
 //import contexts
 import AuthContext from './src/contexts/AuthContext'
 
