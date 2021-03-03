@@ -11,7 +11,7 @@ Chatter is a fully responsive chat app built using React Native. Chatter allows 
  - socket-io
 
 ## Development
-This project is still in its **early stages** but is actively being developed and designed by myself.
+This project is still in it's **early stages** but is actively being developed and designed by myself.
 
 ## Screenshots of project
 ![Welcome Screen](https://i.imgur.com/HAp5dSN.png)
