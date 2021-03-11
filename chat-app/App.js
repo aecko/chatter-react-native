@@ -35,7 +35,8 @@ import {
 if (!firebase.apps.length) {
   firebase.initializeApp(FirebaseCore.DEFAULT_APP_OPTIONS);
 } else {
-  firebase.app(); // if already initialized, use that one
+  // if firebase is already intialised then use that instance 
+  firebase.app(); 
 }
 const auth = firebase.auth();
 const firestore = firebase.firestore()
@@ -45,9 +46,9 @@ const firestore = firebase.firestore()
 const Stack = createStackNavigator()
 
 export default function App() {
-  //states
   const [userMobile, setUserMobile] = useState(null);
   const [user] = useAuthState(auth);
+  //Default room for testing
   const [roomCode, setRoomCode] = useState('$KVUXRARV9U')
   const [loadingApp, setLoadingApp] = useState(true)
   const { width, height } = useWindowDimensions()
@@ -62,35 +63,10 @@ export default function App() {
     }
   }, [])
 
-
-
-  //setup context provider values
+  //setup context provider values TODO: Split into multiple contexts
   const value = { auth, firestore, messageRef, messages, setRoomCode, roomCode, setLoadingApp }
 
-  //style sheet for app
-  const styles = StyleSheet.create({
-    container: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      flex: 1,
-      flexDirection: 'row',
-      flexGrow: 0,
-      justifyContent: 'flex-start',
-      backgroundColor: '#2A2B2D',
-      zIndex: -1,
-      width: width,
-      height: height
-    },
-    OtherContainer: {
-      flex: 1,
-      flexDirection: 'column',
-    }
-  });
-
-  //////////////google sign in stuff
-
-
+  //google sign functions
   const initAsync = async () => {
     await GoogleSignIn.initAsync();
     _syncUserWithStateAsync();
@@ -122,14 +98,34 @@ export default function App() {
       alert('login: Error:' + message);
     }
   };
-  ///////////
+
+  //style sheet for app
+  const styles = StyleSheet.create({
+    container: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      flex: 1,
+      flexDirection: 'row',
+      flexGrow: 0,
+      justifyContent: 'flex-start',
+      backgroundColor: '#2A2B2D',
+      zIndex: -1,
+      width: width,
+      height: height
+    },
+    OtherContainer: {
+      flex: 1,
+      flexDirection: 'column',
+    }
+  });
   return (
     <View style={styles.container}>
       <AuthContext.Provider value={value}>
         <Provider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator
-              initialRouteName= {user ? "Welcome" : "StartScreen"}
+              initialRouteName={user ? "Welcome" : "StartScreen"}
               screenOptions={{
                 headerShown: false,
               }}
@@ -148,4 +144,7 @@ export default function App() {
       </AuthContext.Provider>
     </View>
   )
+
+
+
 }
